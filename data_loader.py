@@ -50,12 +50,16 @@ for ticker in names:
         "period":     period
     }
     
+    
+
     try:
         resp = requests.get(url, params=params, timeout=30)
         resp.raise_for_status()
         
         # Сохраняем полученный CSV в файл
         file_path = f"data/moex/{ticker}.csv"
+        if os.path.exists(file_path):
+            continue
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(resp.text)
         
@@ -63,6 +67,6 @@ for ticker in names:
     except Exception as e:
         print(f"❌ Ошибка для {ticker}: {e}")
     
-    time.sleep(1)  # пауза, чтобы не перегружать API
+    time.sleep(1.5)  # пауза, чтобы не перегружать API
 
 print("🎉 Все файлы сохранены в data/moex/")
