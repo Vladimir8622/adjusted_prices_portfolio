@@ -12,7 +12,7 @@ data = response.json()
 tickers = pd.DataFrame(data)
 
 print(f"Найдено {len(tickers)} инструментов на MOEX")
-print(tickers)
+# print(tickers)
 tickers.columns = tickers.iloc[0].tolist()
 tickers = tickers[1:].reset_index(drop=True)
 
