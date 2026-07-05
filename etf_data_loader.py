@@ -1,7 +1,6 @@
 import os
 import time
 import requests
-import pandas as pd
 from urllib3.util.retry import Retry
 from requests.adapters import HTTPAdapter
 
